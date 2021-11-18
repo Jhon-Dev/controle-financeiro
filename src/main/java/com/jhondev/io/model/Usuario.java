@@ -21,6 +21,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Representa um usuário no sistema
+ */
+
 @Entity
 public class Usuario implements UserDetails {
 
