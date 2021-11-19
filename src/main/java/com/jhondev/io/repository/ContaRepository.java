@@ -3,9 +3,9 @@ package com.jhondev.io.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.jhondev.io.model.Contas;
+import com.jhondev.io.model.Conta;
 
 @Repository
-public interface ContasRepository extends CrudRepository<Contas, Long>{
+public interface ContaRepository extends CrudRepository<Conta, Long>{
 
 }

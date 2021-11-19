@@ -10,7 +10,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Contas {
+public class Conta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -64,7 +64,7 @@ public class Contas {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Contas other = (Contas) obj;
+		Conta other = (Conta) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
