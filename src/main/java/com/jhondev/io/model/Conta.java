@@ -1,9 +1,15 @@
 package com.jhondev.io.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Representa uma conta no sistema
@@ -19,7 +25,10 @@ public class Conta {
 	private String nome;
 	
 	private double valor;
-
+	
+	@OneToMany(mappedBy = "conta", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<CategoriaContas> categoriaContas = new ArrayList<CategoriaContas>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -42,6 +51,14 @@ public class Conta {
 
 	public void setValor(double valor) {
 		this.valor = valor;
+	}	
+
+	public List<CategoriaContas> getCategoriaContas() {
+		return categoriaContas;
+	}
+
+	public void setCategoriaContas(List<CategoriaContas> categoriaContas) {
+		this.categoriaContas = categoriaContas;
 	}
 
 	@Override
@@ -79,6 +96,5 @@ public class Conta {
 			return false;
 		return true;
 	}
-	
-	
+		
 }
