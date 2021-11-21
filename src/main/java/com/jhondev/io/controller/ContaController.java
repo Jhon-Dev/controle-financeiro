@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,10 +22,10 @@ import com.jhondev.io.repository.ContaRepository;
 @RequestMapping(value = "/conta")
 public class ContaController {
 
-	@Autowired 
+	@Autowired
 	private ContaRepository contaRepository;
 
-	/*Listar todas as contas*/
+	/* LISTAR todas as contas */
 	@GetMapping(value = "/", produces = "application/json")
 	@CacheEvict(value = "cachecontas", allEntries = true)
 	@CachePut("cachecontas")
@@ -33,5 +35,14 @@ public class ContaController {
 
 		return new ResponseEntity<List<Conta>>(list, HttpStatus.OK);
 
+	}
+
+	/* CADASTRAR uma conta */
+	@PostMapping(value = "/", produces = "application/json")
+	public ResponseEntity<Conta> cadastrar(@RequestBody Conta conta) {
+
+		Conta contaSalva = contaRepository.save(conta);
+
+		return new ResponseEntity<Conta>(contaSalva, HttpStatus.OK);
 	}
 }
