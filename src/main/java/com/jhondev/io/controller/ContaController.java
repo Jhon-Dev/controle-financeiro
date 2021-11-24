@@ -8,7 +8,9 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +27,7 @@ public class ContaController {
 	@Autowired
 	private ContaRepository contaRepository;
 
-	/* LISTAR todas as contas */
+	/* LISTAR TODAS */
 	@GetMapping(value = "/", produces = "application/json")
 	@CacheEvict(value = "cachecontas", allEntries = true)
 	@CachePut("cachecontas")
@@ -37,12 +39,21 @@ public class ContaController {
 
 	}
 
-	/* CADASTRAR uma conta */
+	/* CADASTRAR*/
 	@PostMapping(value = "/", produces = "application/json")
 	public ResponseEntity<Conta> cadastrar(@RequestBody Conta conta) {
 
 		Conta contaSalva = contaRepository.save(conta);
 
 		return new ResponseEntity<Conta>(contaSalva, HttpStatus.OK);
+	}
+	
+	/*DELETAR*/
+	@DeleteMapping(value = "/{id}", produces = "application/text")
+	public String delete(@PathVariable(value = "id") Long id) {
+		
+		contaRepository.deleteById(id);
+		
+		return "Conta deletada";
 	}
 }
