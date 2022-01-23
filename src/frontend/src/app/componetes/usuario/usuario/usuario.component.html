@@ -1,0 +1,35 @@
+<br>
+<div class="container">
+  <div class="row height d-flex justify-content-center align-items-center">
+      <div class="col-md-8">
+          <div class="search"> <i class="fa fa-search"></i> 
+            <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="nome" placeholder="Digite o nome do usuário"> 
+            <button type="button" (click)="consultarUser()" class="btn btn-primary">Pesquisar</button> 
+          </div>
+          
+      </div>
+      <div >
+        <button [routerLink]="['/usuarioAdd']" routerLinkActive="router-link-active" class="btn btn-success ">Novo</button> 
+      </div>
+  </div>
+</div>
+<br>
+
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Deletar</th>
+        <th scope="col">Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students ">  
+        <td>{{student.id}}</td>
+        <td>{{student.nome}}</td>
+        <td><button (click)="deleteUsuario(student.id)" class="btn btn-danger">Deletar</button></td>
+        <td><button [routerLink]="['/usuarioAdd', student.id]" routerLinkActive="router-link-active"  class="btn btn-secondary">Editar</button></td>
+      </tr>
+    </tbody>
+  </table>

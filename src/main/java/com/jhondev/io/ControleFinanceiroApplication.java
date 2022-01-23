@@ -34,9 +34,9 @@ public class ControleFinanceiroApplication implements WebMvcConfigurer{
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 
-		registry.addMapping("/usuario/**")
-		.allowedMethods("*")
-		.allowedOrigins("*");
+		registry.addMapping("/**")
+				.allowedOrigins("http://localhost:4200")
+				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 		/*Liberando o mapeamento de usuário para todas as origens*/
 	}
 }
