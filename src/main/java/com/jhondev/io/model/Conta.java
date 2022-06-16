@@ -1,5 +1,8 @@
 package com.jhondev.io.model;
 
+import com.jhondev.io.model.enums.StatusLancamento;
+import com.jhondev.io.model.enums.TipoLancamento;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +31,10 @@ public class Conta {
 	
 	@OneToMany(mappedBy = "conta", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CategoriaContas> categoriaContas = new ArrayList<CategoriaContas>();
+
+	private TipoLancamento tipo;
+
+	private StatusLancamento status;
 	
 	public Long getId() {
 		return id;
@@ -61,40 +68,60 @@ public class Conta {
 		this.categoriaContas = categoriaContas;
 	}
 
+	public TipoLancamento getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoLancamento tipo) {
+		this.tipo = tipo;
+	}
+
+	public StatusLancamento getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusLancamento status) {
+		this.status = status;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Conta conta = (Conta) o;
+
+		if (Double.compare(conta.valor, valor) != 0) return false;
+		if (!id.equals(conta.id)) return false;
+		if (!nome.equals(conta.nome)) return false;
+		if (!categoriaContas.equals(conta.categoriaContas)) return false;
+		if (tipo != conta.tipo) return false;
+		return status == conta.status;
+	}
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		int result;
 		long temp;
+		result = id.hashCode();
+		result = 31 * result + nome.hashCode();
 		temp = Double.doubleToLongBits(valor);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		result = 31 * result + categoriaContas.hashCode();
+		result = 31 * result + tipo.hashCode();
+		result = 31 * result + status.hashCode();
 		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Conta other = (Conta) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (Double.doubleToLongBits(valor) != Double.doubleToLongBits(other.valor))
-			return false;
-		return true;
+	public String toString() {
+		return "Conta{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", valor=" + valor +
+				", categoriaContas=" + categoriaContas +
+				", tipo=" + tipo +
+				", status=" + status +
+				'}';
 	}
-		
 }
