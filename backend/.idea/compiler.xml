@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="controlefinanceiro" />
         <module name="controle-financeiro" />
+        <module name="backend" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="backend" options="-parameters" />
       <module name="controle-financeiro" options="-parameters" />
       <module name="controlefinanceiro" options="-parameters" />
     </option>
