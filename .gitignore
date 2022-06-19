@@ -1,4 +1,4 @@
-/backend/target/
-/backend/bin/
+/target/
+/bin/
 /.idea/
-/backend/controlefinanceiro.iml
+/controlefinanceiro.iml
