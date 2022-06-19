@@ -2,6 +2,7 @@ package com.jhondev.io.controller;
 
 import com.jhondev.io.model.Lancamento;
 import com.jhondev.io.repository.LancamentoRepository;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(value = "API REST Lançamentos")
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api/finance")

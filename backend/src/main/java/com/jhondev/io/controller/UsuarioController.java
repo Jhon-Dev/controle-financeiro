@@ -3,6 +3,7 @@ package com.jhondev.io.controller;
 import java.util.List;
 import java.util.Optional;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jhondev.io.model.Usuario;
 import com.jhondev.io.repository.UsuarioRepository;
 
+@Api(value = "API REST Usuarios")
 @CrossOrigin
 @RestController /* Arquitetura REST */
 @RequestMapping(value = "/api/finance")
