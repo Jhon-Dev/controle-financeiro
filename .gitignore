@@ -1,2 +1,4 @@
 /backend/target/
 /backend/bin/
+/.idea/
+/backend/controlefinanceiro.iml
