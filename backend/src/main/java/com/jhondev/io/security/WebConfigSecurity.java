@@ -33,7 +33,8 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 		
 		/* Ativando a permissão para acesso a pagina inicial especifica do sistema (ex: sistema.com.br/index) */
 		.antMatchers("/index").permitAll()
-		
+		.antMatchers("/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs","/webjars/**").permitAll()
+
 		/* Url de Logout - Redireciona após o user deslogar do sistema */
 		.anyRequest().authenticated().and().logout().logoutSuccessUrl("/index")
 		
