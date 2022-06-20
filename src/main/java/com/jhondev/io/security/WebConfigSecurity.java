@@ -30,7 +30,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 		
 		/* Ativando a permissão para acesso a pagina inicial do sistema (ex: sistema.com.br/) */
 		.disable().authorizeRequests()
-		.antMatchers("api-controlle-financeiro.herokuapp.com/**").permitAll()
+		.antMatchers("/**").permitAll()
 
 		/* Ativando a permissão para acesso a pagina inicial especifica do sistema (ex: sistema.com.br/index) */
 		.antMatchers("/index").permitAll()
