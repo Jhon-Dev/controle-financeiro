@@ -32,8 +32,9 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 		.disable().authorizeRequests()
 		.antMatchers("/**").permitAll()
 		.antMatchers("/api/**").permitAll()
+		.antMatchers("https://api-controlle-financeiro.herokuapp.com/**").permitAll()
 
-		/* Ativando a permissão para acesso a pagina inicial especifica do sistema (ex: sistema.com.br/index) */
+				/* Ativando a permissão para acesso a pagina inicial especifica do sistema (ex: sistema.com.br/index) */
 		.antMatchers("/index").permitAll()
 		.antMatchers("/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs","/webjars/**").permitAll()
 
