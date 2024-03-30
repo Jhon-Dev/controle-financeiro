@@ -1,6 +1,5 @@
-# controle-financeiro
-Sistema de controle financeiro, usando Spring boot e Angular
-
+# api-controle-financeiro
+API de controle financeiro, usando Spring boot
 Obs: Em Produção nas horas vagas⏱
 
 
